@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+$black: #222222;
+$greyish: rgb(116, 116, 116);
+
+.digital-timer {
+    width: 375px;
+    height: 667px;
+    margin: auto;
+    background: #eeeeee;
+    font-family: 'PT Sans', sans-serif;
+    color: $black;
+
+        header {
+            display: flex;
+
+            img {
+                margin: 0 7rem 0 1rem;
+            }
+
+            h3 {
+                font-weight: 400;
+                font-size: 20px;
+            }
+        }
+
+        article {
+            text-align: center;
+
+            h1 {
+                margin: 12rem 0 14rem 0;
+                font-weight: 700;
+                font-size: 80px;
+            }
+
+            button {
+                font-weight: 700;
+                font-size: 16px;
+                color: $greyish;
+                padding: .6rem;
+            }
+        }
+}
