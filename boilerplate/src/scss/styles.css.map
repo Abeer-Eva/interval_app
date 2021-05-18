@@ -1,0 +1,15 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "styles.scss",
+        "loadingpage.scss",
+        "digital-timer.scss",
+        "visual-timer.scss",
+        "menu.scss",
+        "set-timer.scss",
+        "analog-timer.scss"
+    ],
+    "names": [],
+    "file": "styles.css"
+}
