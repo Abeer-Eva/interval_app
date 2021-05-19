@@ -1,1 +1,21 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+.digital-timer {
+  width: 375px;
+  height: 667px;
+  margin: auto;
+  background: #eeeeee;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.digital-timer h1 {
+  font-weight: 700;
+}
+
+.digital-timer h3 {
+  font-weight: 400;
+}
+
+.digital-timer button {
+  font-weight: 700;
+}
+/*# sourceMappingURL=styles.css.map */
