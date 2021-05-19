@@ -26,25 +26,25 @@
         <!-- SET TIMER PAGE -->
         <section id="set-timer-page">
             <main>
-                <p class="icon">&#8249;</p>
+                <p id="down" class="icon">&#8249;</p>
                 <aside>
-                    <h1>10:00</h1>
+                    <h1 id="showTime">10:00</h1>
                     <p>Minutes</p>
                 </aside>
-                <p class="icon">&#8250;</p>
+                <p id="up" class="icon">&#8250;</p>
             </main>
             <form>
                 <label>
-                    <input type="checkbox" name="intervals">
+                    <input id="intervals" type="checkbox" name="intervals">
                     intervals
                 </label>
                 <label>
-                    <input type="checkbox" name="break">
+                    <input id="break" type="checkbox" name="break">
                     5 min break / interval
                 </label>
             </form>
 
-            <button>start timer</button>
+            <button id="startButton">start timer</button>
 
         </section>
 
@@ -67,7 +67,7 @@
         </section>
 
         <!-- DIGITAL TIMER -->
-        <section class="digital-timer">
+        <section id="digital-timer" class="hide">
             <header>
                 <img src="./assets/navicon.svg" alt="navicon">
                 <h3>interval</h3>
@@ -138,6 +138,7 @@
 
     </div>
     <script src="index.ts"></script>
+    <script src="ts/timersetup.ts"></script>
 </body>
 
 </html>
