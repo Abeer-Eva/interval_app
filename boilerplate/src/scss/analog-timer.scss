@@ -6,23 +6,29 @@ $size: 200px;
 .timerAnalog {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     flex-direction: column;
     width: 375px;
     height: 667px;
     margin: auto;
-    background: #E5E5E5;
+    background: #EEEEEE;
     font-family: 'PT Sans', sans-serif;
     padding-bottom: 3rem;
-    
-header {
-        display: flex;
 
-img {
-            margin: 0 8rem 0 1rem;
-        
-        }
-    }
+    header {
+      display: flex;
+
+      img {
+          margin: 0 7rem 0 1rem;
+      }
+
+      h3 {
+          font-weight: 400;
+          font-size: 20px;
+          
+      }
+  }
+
+
 article{
     justify-content: center;
     
@@ -80,5 +86,11 @@ button {
     font-size: 16px;
     color: #222;
     padding: .6rem;
+    align-self: center;
+    text-transform: uppercase;
+    border-radius: 5px;
+    opacity: .6;
+    letter-spacing: .1rem;
+    border: 1px solid $greyish;
 }
 }

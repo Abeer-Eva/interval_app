@@ -13,7 +13,7 @@ $greyish: rgb(116, 116, 116);
 
         header {
             display: flex;
-
+            
             img {
                 margin: 0 7rem 0 1rem;
             }
@@ -21,6 +21,7 @@ $greyish: rgb(116, 116, 116);
             h3 {
                 font-weight: 400;
                 font-size: 20px;
+                
             }
         }
 
@@ -38,6 +39,9 @@ $greyish: rgb(116, 116, 116);
                 font-size: 16px;
                 color: $greyish;
                 padding: .6rem;
+                border-radius: 5px;
+                letter-spacing: .1rem;
+                border: 1px solid $greyish;
             }
         }
 }

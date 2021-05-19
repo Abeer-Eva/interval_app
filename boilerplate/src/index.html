@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,71 +8,87 @@
     <title>Interval App</title>
     <link rel="stylesheet" href="./scss/styles.scss">
 </head>
+
 <body>
     <div id="app">
+        <!-- LOADING PAGE -->
 
-        <section class="timerAnalog" >
-            <header>
-            <img src="./imges/navicon.svg" alt="navicon">
-            <h2>interval</h2>
-            </header>
-
-            <article>
-            <div class="clock__second"></div>
-            <div class="clock__minute"></div>
-            <div class="clock__hour"></div>
-            </article>
-
-    
-            <button>ABORT timer</button>
-            
-
-        </section>  
-
-    
-       <section class="pausvy">
-      
-
-            <section>
-            
-            <section>
-                <p>3.37</p>
-            <section>
-            
-                    <strong>Pause & breath</strong>
-                   
-                  
-            <section>
-            
-                <img src="imges/Frame 6.svg">
-            
-            </section>
-            
-            </section>
-            
-            </section>
-            
-            </section>
-          
-           
-            <button>NO PAUSE, GO NOW!</button>
-            
-            </section>
-            
-
-         
-
-       </section>
+        </section>
         <section id="loading-page">
             <section class="logo">
                 <img src="logo.svg">
                 <h2>INTERVAL</h2>
             </section>
-            
+
             <p>For all your timing needs</p>
         </section>
- <!-- detta la jag in -->
-        <section id="alarm-view"> 
+
+        <!-- SET TIMER PAGE -->
+        <section id="set-timer-page">
+            <main>
+                <p class="icon">&#8249;</p>
+                <aside>
+                    <h1>10:00</h1>
+                    <p>Minutes</p>
+                </aside>
+                <p class="icon">&#8250;</p>
+            </main>
+            <form>
+                <label>
+                    <input type="checkbox" name="intervals">
+                    intervals
+                </label>
+                <label>
+                    <input type="checkbox" name="break">
+                    5 min break / interval
+                </label>
+            </form>
+
+            <button>start timer</button>
+
+        </section>
+
+        <!-- ANALOG TIMER  -->
+
+        <section class="timerAnalog">
+            <header>
+                <img src="./imges/navicon.svg" alt="navicon">
+                <h3>interval</h3>
+            </header>
+
+            <article>
+                <div class="clock__second"></div>
+                <div class="clock__minute"></div>
+                <div class="clock__hour"></div>
+            </article>
+
+            <button>ABORT timer</button>
+
+        </section>
+
+        <!-- DIGITAL TIMER -->
+        <section class="digital-timer">
+            <header>
+                <img src="./assets/navicon.svg" alt="navicon">
+                <h3>interval</h3>
+            </header>
+            <article>
+                <h1>7:32</h1>
+                <button>ABORT TIMER</button>
+            </article>
+        </section>
+
+        <!-- VISUAL TIMER -->
+        <section id="visual-timer">
+            <div id="timer">
+                <img src="img/navicon.svg" alt="menu">
+                <h3>interval</h3>
+                <button>abort timer</button>
+            </div>
+        </section>
+
+        <!-- ALARM VIEW -->
+        <section id="alarm-view">
             <section>
                 <section>
                     <section>
@@ -85,40 +102,29 @@
             </section>
             <button>Set new timer</button>
         </section>
-<!-- till hit -->
-        <section id="set-timer-page">
-            <main>
-                <p class="icon">&#8249;</p>
-                    <aside>
-                        <h1>10:00</h1>
-                        <p>Minutes</p>
-                    </aside>
-                <p class="icon">&#8250;</p>
-            </main>
-            <form>
-                <label>
-                    <input type="checkbox" name="intervals">
-                 intervals
-                </label>
-                <label>
-                <input type="checkbox" name="break">
-                5 min break / interval
-                </label>
-            </form>
 
-            <button>start timer</button>
+        <!-- BREAK VIEW -->
+
+        <section class="pausvy">
+
+            <section>
+                <section>
+                    <p>3.37</p>
+                    <section>
+                        <strong>Pause & breath</strong>
+                        <section>
+                            <img src="imges/Frame 6.svg">
+                        </section>
+                    </section>
+                </section>
+
+            </section>
+
+            <button>NO PAUSE, GO NOW!</button>
 
         </section>
 
-        <section id="visual-timer">
-          <div id="timer">
-            <img src="img/navicon.svg" alt="menu">
-            <h3>interval</h3>
-            <button>abort timer</button>
-          </div>
-        </section>
-        <h1>Hello World!</h1>
-
+        <!-- MENU  -->
         <section class="menu">
             <header>
                 <img src="./assets/vectorpaint.svg" alt="navicon">
@@ -130,18 +136,8 @@
             </article>
         </section>
 
-        <section class="digital-timer">
-            <header>
-                <img src="./assets/navicon.svg" alt="navicon">
-                <h3>interval</h3>
-            </header>
-            <article>
-                <h1>7:32</h1>
-                <button>ABORT TIMER</button>
-            </article>
-        </section>
-
     </div>
     <script src="index.ts"></script>
 </body>
+
 </html>
