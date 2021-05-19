@@ -1,0 +1,84 @@
+$black: #1b1e23;
+$size: 200px;
+
+
+  
+.timerAnalog {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 375px;
+    height: 667px;
+    margin: auto;
+    background: #E5E5E5;
+    font-family: 'PT Sans', sans-serif;
+    padding-bottom: 3rem;
+    
+header {
+        display: flex;
+
+img {
+            margin: 0 8rem 0 1rem;
+        
+        }
+    }
+article{
+    justify-content: center;
+    
+
+
+.clock {
+  height: $size;
+  width: $size;
+  border-radius: #{$size / 2};
+  display: flex;
+  justify-content: center;
+  position: relative;
+  &__second,
+  &__minute,
+  &__hour{
+    position: absolute;
+    left: calc(50% - 1px);
+    width: 2px;
+    background: $black;
+    transform-origin: bottom center;
+    z-index: 2;
+    border-radius: 1px;
+  }
+  &__second {
+    height: #{($size / 2) - 10};
+    margin-top: 10px;
+    background: rgb(70, 192, 230);
+    animation: time 60s infinite steps(60);
+    z-index: 3;
+  }
+  &__minute {
+    height: #{($size / 2) - 20};
+    margin-top: 20px;
+    opacity: 0.75;
+    animation: time 3600s linear infinite;
+  }
+  &__hour {
+    height: #{($size / 2) - 40};
+    margin-top: 40px;
+    animation: time 43200s linear infinite;
+  }
+ 
+  
+
+@keyframes time {
+  to {
+    transform: rotateZ(360deg);
+  }
+}}
+}
+
+button {
+    border: 1px solid #222222;
+    font-weight: 700;
+    font-size: 16px;
+    color: #222;
+    padding: .6rem;
+}
+}
