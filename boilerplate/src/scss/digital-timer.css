@@ -1,1 +1,42 @@
-/* No CSS *//*# sourceMappingURL=digital-timer.css.map */
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+.digital-timer {
+  width: 375px;
+  height: 667px;
+  margin: auto;
+  background: #eeeeee;
+  font-family: 'PT Sans', sans-serif;
+  color: #222222;
+}
+
+.digital-timer header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.digital-timer header img {
+  margin: 0 7rem 0 1rem;
+}
+
+.digital-timer header h3 {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.digital-timer article {
+  text-align: center;
+}
+
+.digital-timer article h1 {
+  margin: 12rem 0 14rem 0;
+  font-weight: 700;
+  font-size: 80px;
+}
+
+.digital-timer article button {
+  font-weight: 700;
+  font-size: 16px;
+  color: #747474;
+  padding: .6rem;
+}
+/*# sourceMappingURL=digital-timer.css.map */
