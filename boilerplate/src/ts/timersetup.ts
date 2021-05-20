@@ -19,6 +19,8 @@ const pauseView: any = document.getElementById('pausvy');
 const breakTime: any = document.getElementById('break-time');
 const noPauseBtn: any = document.getElementById('no-pause');
 const newTimer: any = document.getElementById('new-timer-btn');
+const logo:any= document.getElementById('logo');
+const loadingPage:any = document.getElementById('loading-page');
 let counter: number = 10;
 let countDown: any = '';
 let intervalChecked: boolean = false;
@@ -135,5 +137,8 @@ newTimer.addEventListener('click', () => {
     setTimerPage.classList.remove('hide');
     alarmView.classList = 'hide';
 })
-
+logo.addEventListener('click', () =>{
+loadingPage.classList= 'hide';
+setTimerPage.classList.remove('hide');
+})
 export { countDown, intervalChecked, breaksChecked };
