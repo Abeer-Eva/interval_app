@@ -1,6 +1,8 @@
-import timer from '../index';
+import * as timers from '../index';
 
-console.log(timer);
+
+console.log(timers.timer);
+console.log(timers.breakTimer);
 
 const up: any = document.getElementById('up');
 const down: any = document.getElementById('down');
@@ -14,10 +16,14 @@ const startButton: any = document.getElementById('startButton');
 const digitalTime: any = document.getElementById('digitalTime');
 const alarmView: any = document.getElementById('alarm-view');
 const pauseView: any = document.getElementById('pausvy');
+const breakTime: any = document.getElementById('break-time');
+const noPauseBtn: any = document.getElementById('no-pause');
 let counter: number = 10;
 let countDown: any = '';
 let intervalChecked: boolean = false;
 let breaksChecked: boolean = false;
+let chosenNumber = 0;
+
 
 up.addEventListener('click', () => {
     counter++;
@@ -55,23 +61,31 @@ if (intervalChecked === false) {
     breaks.disabled = true;
 }
 
+function runTimer (counter:number):void {
+    timers.timer.start({ countdown: true, startValues: { seconds: counter } });
+
+    timers.timer.on('secondsUpdated', () => {
+    console.log(timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds);
+    countDown = timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds;
+    digitalTime.innerHTML = countDown;
+});
+}
+
+
 startButton.addEventListener('click', () => {
+    chosenNumber = counter;
+    
     // On click start timer
-    timer.start({ countdown: true, startValues: { minutes: counter } });
+  
+   runTimer(counter);
 
-    timer.on('secondsUpdated', () => {
-        console.log(timer.getTimeValues().minutes + ':' + timer.getTimeValues().seconds);
-        countDown = timer.getTimeValues().minutes + ':' + timer.getTimeValues().seconds;
-        digitalTime.innerHTML = countDown;
-    });
-
-    timer.on('targetAchieved', () => {
+   timers.timer.on('targetAchieved', () => {
         if (intervalChecked === true && breaksChecked === false) {
-            timer.start({ countdown: true, startValues: { minutes: counter } });
+            timers.timer.start({ countdown: true, startValues: { minutes: counter } });
 
-            timer.on('secondsUpdated', () => {
-                console.log(timer.getTimeValues().minutes + ':' + timer.getTimeValues().seconds);
-                countDown = timer.getTimeValues().minutes + ':' + timer.getTimeValues().seconds;
+            timers.timer.on('secondsUpdated', () => {
+                console.log(timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds);
+                countDown = timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds;
                 digitalTime.innerHTML = countDown;
             });
 
@@ -82,18 +96,38 @@ startButton.addEventListener('click', () => {
         } else if (intervalChecked === true && breaksChecked === true) {
             pauseView.classList.remove('hide');
             digitalTimer.classList = 'hide';
-        }
-    })
+            timers.breakTimer.start({ countdown: true, startValues: { seconds: 5 } });
+            timers.breakTimer.on('secondsUpdated', () => {
+                console.log(timers.breakTimer.getTimeValues().minutes + ':' + timers.breakTimer.getTimeValues().seconds);
+                let breakLeft = timers.breakTimer.getTimeValues().minutes + ':' + timers.breakTimer.getTimeValues().seconds;
+                breakTime.innerHTML = breakLeft;
+            });
+            timers.breakTimer.on('targetAchieved', () => {
+                pauseView.classList = 'hide';
+                digitalTimer.classList.remove('hide');
+                console.log(counter);
+                runTimer(chosenNumber);
+                });
+            }
+        });
 
     digitalTimer.classList.remove('hide');
     setTimerPage.classList = 'hide';
 });
 
 abortButtonDigital.addEventListener('click', () => {
-   timer.stop();
+    timers.timer.stop();
    setTimerPage.classList.remove('hide');
    digitalTimer.classList = 'hide';
    digitalTime.innerHTML = ':'
 })
+
+noPauseBtn.addEventListener('click', () => {
+    timers.breakTimer.stop();
+    runTimer(chosenNumber);
+    pauseView.classList = 'hide';
+    digitalTimer.classList.remove('hide');
+    breakTime.innerHTML = ':'
+});
 
 export { countDown, intervalChecked, breaksChecked };
