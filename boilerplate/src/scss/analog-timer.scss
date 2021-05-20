@@ -3,7 +3,7 @@ $size: 200px;
 
 
   
-.timerAnalog {
+#timerAnalog {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -93,4 +93,9 @@ button {
     letter-spacing: .1rem;
     border: 1px solid $greyish;
 }
+
+&.hide {
+  display: none;
+}
+
 }

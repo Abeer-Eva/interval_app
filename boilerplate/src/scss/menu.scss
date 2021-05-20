@@ -3,7 +3,7 @@
 $grey: rgb(229, 229, 229);
 $white: #ffffff;
 
-.menu {
+#menu {
     width: 375px;
     height: 667px;
     background: $grey;
@@ -25,5 +25,9 @@ $white: #ffffff;
             font-size: 24px;
             font-weight: 700;
         }
+    }
+
+    &.hide {
+        display: none;
     }
 }

@@ -1,1 +1,55 @@
-/* No CSS *//*# sourceMappingURL=visual-timer.css.map */
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+:root {
+  font-family: 'PT Sans', sans-serif;
+}
+
+#visual-timer {
+  width: 375px;
+  height: 667px;
+  margin: auto;
+  background: #EEEEEE;
+  color: #fff;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+}
+
+#visual-timer #timer {
+  height: 40%;
+  background: #222;
+}
+
+#visual-timer #timer img {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+}
+
+#visual-timer #timer h3 {
+  position: absolute;
+  font-weight: normal;
+  left: 43%;
+}
+
+#visual-timer #timer button {
+  font-weight: 700;
+  font-size: 16px;
+  color: #747474;
+  padding: .6rem;
+  border-radius: 5px;
+  position: absolute;
+  left: 30%;
+  bottom: 50px;
+  text-transform: uppercase;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: none;
+  letter-spacing: .1rem;
+  border: 1px solid #747474;
+}
+
+#visual-timer.hide {
+  display: none;
+}
+/*# sourceMappingURL=visual-timer.css.map */
