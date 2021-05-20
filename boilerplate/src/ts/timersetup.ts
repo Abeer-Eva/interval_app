@@ -19,11 +19,23 @@ const pauseView: any = document.getElementById('pausvy');
 const breakTime: any = document.getElementById('break-time');
 const noPauseBtn: any = document.getElementById('no-pause');
 const newTimer: any = document.getElementById('new-timer-btn');
+const menuItem: any = document.getElementById('menu');
+const menuAnalog: any = document.getElementById('menu-analog');
+const menuDigital: any = document.getElementById('menu-digital');
+const menuVisual: any = document.getElementById('menu-visual');
+const navIconDigital: any = document.getElementById('navicon-digital');
+const navIconAnalog: any = document.getElementById('navicon-analog');
+const navIconVisual: any = document.getElementById('navicon-visual');
+const naviconMenu: any = document.getElementById('navicon-menu');
+const analogTimer: any = document.getElementById('timerAnalog');
+const visualTimer: any = document.getElementById('visual-timer');
+
 let counter: number = 10;
 let countDown: any = '';
 let intervalChecked: boolean = false;
 let breaksChecked: boolean = false;
 let chosenNumber = 0;
+let currentPage: string;
 
 
 up.addEventListener('click', () => {
@@ -62,25 +74,25 @@ if (intervalChecked === false) {
     breaks.disabled = true;
 }
 
-function runTimer (counter:number):void {
+function runTimer(counter: number): void {
     timers.timer.start({ countdown: true, startValues: { seconds: counter } });
 
     timers.timer.on('secondsUpdated', () => {
-    console.log(timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds);
-    countDown = timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds;
-    digitalTime.innerHTML = countDown;
-});
+        console.log(timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds);
+        countDown = timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds;
+        digitalTime.innerHTML = countDown;
+    });
 }
 
 
 startButton.addEventListener('click', () => {
     chosenNumber = counter;
-    
-    // On click start timer
-  
-   runTimer(counter);
 
-   timers.timer.on('targetAchieved', () => {
+    // On click start timer
+
+    runTimer(counter);
+
+    timers.timer.on('targetAchieved', () => {
         if (intervalChecked === true && breaksChecked === false) {
             timers.timer.start({ countdown: true, startValues: { minutes: counter } });
 
@@ -108,9 +120,9 @@ startButton.addEventListener('click', () => {
                 digitalTimer.classList.remove('hide');
                 console.log(counter);
                 runTimer(chosenNumber);
-                });
-            }
-        });
+            });
+        }
+    });
 
     digitalTimer.classList.remove('hide');
     setTimerPage.classList = 'hide';
@@ -118,9 +130,9 @@ startButton.addEventListener('click', () => {
 
 abortButtonDigital.addEventListener('click', () => {
     timers.timer.stop();
-   setTimerPage.classList.remove('hide');
-   digitalTimer.classList = 'hide';
-   digitalTime.innerHTML = ':'
+    setTimerPage.classList.remove('hide');
+    digitalTimer.classList = 'hide';
+    digitalTime.innerHTML = ':'
 })
 
 noPauseBtn.addEventListener('click', () => {
@@ -136,4 +148,59 @@ newTimer.addEventListener('click', () => {
     alarmView.classList = 'hide';
 })
 
-export { countDown, intervalChecked, breaksChecked };
+
+//----Menu Icon
+navIconAnalog.addEventListener('click', () => {
+    analogTimer.classList = 'hide';
+    menuItem.classList.toggle('hide');
+    currentPage = 'analog';
+})
+
+navIconDigital.addEventListener('click', () => {
+    digitalTimer.classList = 'hide';
+    menuItem.classList.remove('hide');
+    currentPage = 'digital';
+})
+
+navIconVisual.addEventListener('click', () => {
+    visualTimer.classList = 'hide';
+    menuItem.classList.remove('hide');
+    currentPage = 'visual';
+})
+naviconMenu.addEventListener('click', () => {
+   if ( currentPage === 'analog'){
+   menuItem.classList ='hide';
+   analogTimer.classList.remove('hide');
+   
+   } else if ( currentPage === 'digital'){
+    menuItem.classList ='hide';
+    digitalTimer.classList.remove('hide');
+
+   } else  if ( currentPage === 'visual'){
+    menuItem.classList ='hide';
+    visualTimer.classList.remove('hide');
+    
+   }
+
+})
+
+
+//----Menu
+    menuDigital.addEventListener('click', () => {
+        menuItem.classList = 'hide';
+        digitalTimer.classList.remove('hide');
+
+    })
+
+    menuAnalog.addEventListener('click', () => {
+        menuItem.classList = 'hide';
+        analogTimer.classList.remove('hide');
+
+    })
+
+    menuVisual.addEventListener('click', () => {
+        menuItem.classList = 'hide';
+        visualTimer.classList.remove('hide');
+
+    })
+    export { countDown, intervalChecked, breaksChecked };
