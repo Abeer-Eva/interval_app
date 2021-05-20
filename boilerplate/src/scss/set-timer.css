@@ -1,1 +1,126 @@
-/* No CSS *//*# sourceMappingURL=set-timer.css.map */
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+:root {
+  font-family: 'PT Sans', sans-serif;
+}
+
+#set-timer-page {
+  width: 375px;
+  height: 667px;
+  margin: auto;
+  padding-top: 13rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100vh;
+  background: #eee;
+  color: #222;
+  text-align: center;
+}
+
+#set-timer-page main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#set-timer-page main .icon {
+  display: block;
+  margin: auto;
+  font-size: 4.6rem;
+  opacity: .6;
+  padding-top: 1.5rem;
+}
+
+#set-timer-page main aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: inline-block;
+}
+
+#set-timer-page main aside h1 {
+  margin-bottom: 0;
+  font-size: 4.6rem;
+}
+
+#set-timer-page main aside p {
+  margin-top: 0;
+  opacity: 0.6;
+  letter-spacing: .1rem;
+  font-size: 1.2rem;
+}
+
+#set-timer-page form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.2rem;
+  margin: 1.5rem;
+  margin-left: 1.8rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  letter-spacing: .1rem;
+  padding-top: 2rem;
+}
+
+#set-timer-page form label {
+  font-weight: bold;
+  margin-top: .3rem;
+}
+
+#set-timer-page form label input {
+  margin: 0;
+  width: 20px;
+  height: 20px;
+}
+
+#set-timer-page button {
+  width: 300px;
+  border-radius: .3rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: none;
+  display: inline-block;
+  padding: .5rem 1rem;
+  border: 2px solid #222;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: .1rem;
+  font-family: 'PT Sans', sans-serif;
+  -webkit-box-shadow: 2px 6px 8px 2px #888888;
+          box-shadow: 2px 6px 8px 2px #888888;
+  margin-top: .5rem;
+}
+
+#set-timer-page.hide {
+  display: none;
+}
+/*# sourceMappingURL=set-timer.css.map */
