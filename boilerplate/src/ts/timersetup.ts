@@ -18,6 +18,7 @@ const alarmView: any = document.getElementById('alarm-view');
 const pauseView: any = document.getElementById('pausvy');
 const breakTime: any = document.getElementById('break-time');
 const noPauseBtn: any = document.getElementById('no-pause');
+const newTimer: any = document.getElementById('new-timer-btn');
 let counter: number = 10;
 let countDown: any = '';
 let intervalChecked: boolean = false;
@@ -129,5 +130,10 @@ noPauseBtn.addEventListener('click', () => {
     digitalTimer.classList.remove('hide');
     breakTime.innerHTML = ':'
 });
+
+newTimer.addEventListener('click', () => {
+    setTimerPage.classList.remove('hide');
+    alarmView.classList = 'hide';
+})
 
 export { countDown, intervalChecked, breaksChecked };
