@@ -9,8 +9,9 @@ const down: any = document.getElementById('down');
 const showTime: any = document.getElementById('showTime');
 const intervals: any = document.getElementById('intervals');
 const breaks: any = document.getElementById('break');
-const abortButtonDigital: any = document.getElementById('abort__button--digital');
+const abortButtonDigital: HTMLButtonElement = document.getElementById('abort__button--digital');
 const abortButtonVisual: any = document.getElementById('abort__button--visual');
+const abortButtonAnalog: any = document.getElementById('abort__button--analog');
 const digitalTimer: any = document.getElementById('digital-timer');
 const setTimerPage: any = document.getElementById('set-timer-page');
 const startButton: any = document.getElementById('startButton');
@@ -31,14 +32,15 @@ const naviconMenu: any = document.getElementById('navicon-menu');
 const analogTimer: any = document.getElementById('timerAnalog');
 const visualTimer: any = document.getElementById('visual-timer');
 const blackBox: any = document.getElementById('timer');
-
+const secondPointer: any = document.getElementById('second-pointer')
+const minutePointer: any = document.getElementById('minute-pointer')
 const logo: any = document.getElementById('logo');
 const loadingPage: any = document.getElementById('loading-page');
 let counter: number = 10;
 let countDown: any = '';
 let intervalChecked: boolean = false;
 let breaksChecked: boolean = false;
-let chosenNumber = 0;
+let chosenNumber: number = 0;
 let currentPage: string = 'digital';
 
 
@@ -80,7 +82,7 @@ if (intervalChecked === false) {
 }
 
 function runTimer(counter: number): void {
-    timers.timer.start({ countdown: true, startValues: { seconds: counter } });
+    timers.timer.start({ countdown: true, startValues: { minutes: counter } });
 
     timers.timer.on('secondsUpdated', () => {
         console.log(timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds);
@@ -95,14 +97,20 @@ function runTimer(counter: number): void {
             let totalSeconds: number = (timers.timer.getTimeValues().minutes * 60) +
                 timers.timer.getTimeValues().seconds;
             //Percentage of time reached
-            let percent: number = 100 - (totalSeconds / counter) * 100;
+            let percent: number = 100 - (totalSeconds / (counter *60)) * 100;
             console.log(percent);
             //Change styling
             blackBox.style.height = `${percent}%`;
+
+            
+            //ANALOG 
+            let totalDegreesSec: number = totalSeconds * 6;
+            let totalDegreesMin: number =  totalSeconds * 6 / 60;
+            secondPointer.style.transform = `rotate(${totalDegreesSec}deg)`;
+            minutePointer.style.transform = `rotate(${totalDegreesMin}deg)`
         };
         //Run function
         countPercentage();
-
     });
 }
 
@@ -200,6 +208,11 @@ abortButtonVisual.addEventListener('click', () => {
     visualTimer.classList = 'hide';
 })
 
+abortButtonAnalog.addEventListener('click', () => {
+    timers.timer.stop();
+    setTimerPage.classList.remove('hide');
+    analogTimer.classList = 'hide';
+})
 
 noPauseBtn.addEventListener('click', () => {
     timers.breakTimer.stop();
