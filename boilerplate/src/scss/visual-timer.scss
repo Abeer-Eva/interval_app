@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+
+:root {
+    font-family: 'PT Sans', sans-serif;
+}
+
+$baseline: 2rem;
+$backgroundGrey: #eee;
+$darkGrey: #222;
+$basicwhite: #fff;
+$greyish: rgb(116, 116, 116);
+
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#visual-timer {
+    width: 375px;
+    height: 667px;
+    margin: auto;
+    background: #EEEEEE;
+    color: $basicwhite;
+    text-align: center;
+    position: relative;
+
+    #timer {
+        height: 0;
+        background: $darkGrey;
+        transition: 4s linear;
+
+        img {
+            position: absolute;
+            left: 12px;
+            top: 14px;
+        }
+
+        h3 {
+            position: absolute;
+            font-weight: normal;
+            left: 43%;
+        }
+
+        button {
+                font-weight: 700;
+                font-size: 16px;
+                color: $greyish;
+                padding: .6rem;
+                border-radius: 5px;
+            position: absolute;
+            left: 30%;
+         bottom: 50px;
+         text-transform: uppercase;
+         appearance: none;
+        background: none;
+        letter-spacing: .1rem;
+        border: 1px solid $greyish;
+        }
+    }
+    &.hide {
+        display: none;
+    }
+}

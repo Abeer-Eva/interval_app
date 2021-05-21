@@ -1,1 +1,28 @@
-/* No CSS *//*# sourceMappingURL=menu.css.map */
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+#menu {
+  width: 375px;
+  height: 667px;
+  background: #e5e5e5;
+  margin: auto;
+  font-family: 'PT Sans', sans-serif;
+}
+
+#menu header img {
+  margin: 1rem 0 0 1rem;
+}
+
+#menu article {
+  margin-top: 14rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+#menu article h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#menu.hide {
+  display: none;
+}
+/*# sourceMappingURL=menu.css.map */
