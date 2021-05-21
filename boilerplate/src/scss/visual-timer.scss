@@ -22,12 +22,11 @@ $greyish: rgb(116, 116, 116);
     margin: auto;
     background: #EEEEEE;
     color: $basicwhite;
-    height: 100vh;
     text-align: center;
     position: relative;
 
     #timer {
-        height: 40%;
+        height: 0;
         background: $darkGrey;
     
         img {
