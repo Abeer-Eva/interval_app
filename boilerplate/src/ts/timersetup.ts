@@ -141,7 +141,7 @@ startButton.addEventListener('click', () => {
                 visualTimer.classList.add('hide');
             }
 
-            timers.breakTimer.start({ countdown: true, startValues: { seconds: 5 } });
+            timers.breakTimer.start({ countdown: true, startValues: { minutes: 5 } });
             timers.breakTimer.on('secondsUpdated', () => {
                 let breakLeft = timers.breakTimer.getTimeValues().minutes + ':' + timers.breakTimer.getTimeValues().seconds;
                 breakTime.innerHTML = breakLeft;
