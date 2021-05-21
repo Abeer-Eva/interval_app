@@ -30,20 +30,24 @@ $size: 200px;
 
 
 article{
-    justify-content: center;
-    
-
+  align-self: center;
+  justify-content: center;
+  width: $size *1.5;
+  height: $size *1.5;
+  background: url('../img/minutes.svg') no-repeat center;
+  display: flex;
+  align-items: center;
+  position: relative;
 
 .clock {
-  height: $size;
-  width: $size;
+  height: $size*1.5;
+  width: $size*1.5;
   border-radius: #{$size / 2};
   display: flex;
   justify-content: center;
-  position: relative;
+  
   &__second,
-  &__minute,
-  &__hour{
+  &__minute {
     position: absolute;
     left: calc(50% - 1px);
     width: 2px;
@@ -56,20 +60,17 @@ article{
     height: #{($size / 2) - 10};
     margin-top: 10px;
     background: rgb(70, 192, 230);
-    animation: time 60s infinite steps(60);
+   
     z-index: 3;
+    margin-bottom: 90px;
   }
   &__minute {
     height: #{($size / 2) - 20};
     margin-top: 20px;
+    margin-bottom: 90px;
     opacity: 0.75;
-    animation: time 3600s linear infinite;
   }
-  &__hour {
-    height: #{($size / 2) - 40};
-    margin-top: 40px;
-    animation: time 43200s linear infinite;
-  }
+ 
  
   
 
