@@ -10,78 +10,42 @@
     background: #222;
     font-family: 'PT Sans', sans-serif;
     color:#eeeeee;
-    section {
 
-        width: 506px;
-        
+    section {
+        width: 506px;        
         height: 506px;
-        
         display: flex;
-        
         justify-content: center;
-        
-        align-items: center;
-        
-        flex-direction: column;
-        
-        background: rgba(255, 255, 255, 0.02);
-        
-        border-radius: 50%;
-        
-        
-        
-        section {
-        
-        width: 69%;
-        
-        height: 69%;
-        
-        
-        
-        section {
-        
-        width: 68%;
-        
-        height: 68%;
-        
-        
-        
-        strong {
-        
-        position: absolute;
-        
-        margin-top: 200px;
-        
-        font-family: 'PT Sans', sans-serif;
-        
-        font-weight: bold;
-        
-        color: white;
-        
-        letter-spacing: 0.1em;
-        
-        font-size: 36px;
-        
-        line-height: 47px;
-        
+        align-items: center;   
+        flex-direction: column;      
+        background: rgba(255, 255, 255, 0.02);      
+        border-radius: 50%;   
+
+        section {       
+            width: 69%;      
+            height: 69%;      
+            section { 
+            width: 68%;  
+            height: 68%;
+            strong {
+            position: absolute; 
+            margin-top: 200px; 
+            font-family: 'PT Sans', sans-serif;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 0.1em;
+            font-size: 36px; 
+            line-height: 47px;
         }
-        
-        
-        
+
         section {
-        
         width: 65%;
-        
         height: 65%;
-        
         }
-        
         }
-        
-        }
-        
-        }
-        
+    }
+}
+    
         button {
             appearance: none;
             opacity: 0.6;
@@ -96,10 +60,11 @@
             font-size: 1rem;
         }     
 
-        .paus img{
-            margin: 17rem 7rem 7rem 7rem;
+    .paus img{
+        margin: 17rem 7rem 7rem 7rem;
     }
-    strong{
+
+    strong {
         font-family: PT Sans;
         font-size: 36px;
         font-style: normal;
@@ -107,10 +72,9 @@
         line-height: 47px;
         letter-spacing: 0.1em;
         text-align: center;
-        
         }
         
-        p{
+    p {
         position: absolute;
         font-family: PT Sans;
         font-size: 24px;
@@ -120,12 +84,11 @@
         letter-spacing: 0.1em;
         text-align: center;
         margin-top:  310px;
-        
-        }
+    }
 
-        &.hide {
-            display: none;
-        }
+    &.hide {
+        display: none;
+    }
 }
 
 

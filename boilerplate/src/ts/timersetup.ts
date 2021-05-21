@@ -1,15 +1,12 @@
 import * as timers from '../index';
 
 
-console.log(timers.timer);
-console.log(timers.breakTimer);
-
 const up: any = document.getElementById('up');
 const down: any = document.getElementById('down');
 const showTime: any = document.getElementById('showTime');
 const intervals: any = document.getElementById('intervals');
 const breaks: any = document.getElementById('break');
-const abortButtonDigital: HTMLButtonElement = document.getElementById('abort__button--digital');
+const abortButtonDigital: any = document.getElementById('abort__button--digital');
 const abortButtonVisual: any = document.getElementById('abort__button--visual');
 const abortButtonAnalog: any = document.getElementById('abort__button--analog');
 const digitalTimer: any = document.getElementById('digital-timer');
@@ -47,14 +44,14 @@ let currentPage: string = 'digital';
 
 up.addEventListener('click', () => {
     counter++;
-    console.log(counter);
-    showTime.innerHTML = counter + ':00'
+    showTime.innerHTML = counter;
 });
 
 down.addEventListener('click', () => {
-    counter--;
-    console.log(counter);
-    showTime.innerHTML = counter + ':00'
+    if (counter >= 2) {
+        counter--;
+    };
+    showTime.innerHTML = counter;
 });
 
 intervals.addEventListener('click', () => {
@@ -63,18 +60,13 @@ intervals.addEventListener('click', () => {
 
     if (breaks.disabled === true) {
         breaksChecked = false;
-        console.log(breaksChecked);
     } else if (breaks.disabled === false && intervalChecked === true) {
         breaks.checked = false;
-        console.log(breaksChecked);
     }
-
-    console.log(intervalChecked);
 })
 
 breaks.addEventListener('click', () => {
     breaksChecked = !breaksChecked;
-    console.log(breaksChecked);
 })
 
 if (intervalChecked === false) {
@@ -85,7 +77,6 @@ function runTimer(counter: number): void {
     timers.timer.start({ countdown: true, startValues: { minutes: counter } });
 
     timers.timer.on('secondsUpdated', () => {
-        console.log(timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds);
         countDown = timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds;
         digitalTime.innerHTML = countDown;
 
@@ -97,15 +88,13 @@ function runTimer(counter: number): void {
             let totalSeconds: number = (timers.timer.getTimeValues().minutes * 60) +
                 timers.timer.getTimeValues().seconds;
             //Percentage of time reached
-            let percent: number = 100 - (totalSeconds / (counter *60)) * 100;
-            console.log(percent);
+            let percent: number = 100 - (totalSeconds / (counter * 60)) * 100;
             //Change styling
             blackBox.style.height = `${percent}%`;
 
-            
             //ANALOG 
             let totalDegreesSec: number = totalSeconds * 6;
-            let totalDegreesMin: number =  totalSeconds * 6 / 60;
+            let totalDegreesMin: number = totalSeconds * 6 / 60;
             secondPointer.style.transform = `rotate(${totalDegreesSec}deg)`;
             minutePointer.style.transform = `rotate(${totalDegreesMin}deg)`
         };
@@ -125,70 +114,52 @@ startButton.addEventListener('click', () => {
         menuItem.classList = 'hide';
         blackBox.style.height = '0';
         if (intervalChecked === true && breaksChecked === false) {
-            
             runTimer(counter);
-
-
         } else if (intervalChecked === false) {
             alarmView.classList.remove('hide');
             if (currentPage === 'analog') {
-                console.log(currentPage);
                 analogTimer.classList.add('hide');
 
             } else if (currentPage === 'digital') {
-                console.log(currentPage);
                 digitalTimer.classList.add('hide');
 
             } else if (currentPage === 'visual') {
-                console.log(currentPage);
                 visualTimer.classList.add('hide');
-
-            }
-
-
-        } else if (intervalChecked === true && breaksChecked === true) {
+            } 
+        } 
+        
+        else if (intervalChecked === true && breaksChecked === true) {
             pauseView.classList.remove('hide');
 
             if (currentPage === 'analog') {
-                console.log(currentPage);
                 analogTimer.classList.add('hide');
 
             } else if (currentPage === 'digital') {
-                console.log(currentPage);
                 digitalTimer.classList.add('hide');
 
             } else if (currentPage === 'visual') {
-                console.log(currentPage);
                 visualTimer.classList.add('hide');
-
             }
 
             timers.breakTimer.start({ countdown: true, startValues: { seconds: 5 } });
             timers.breakTimer.on('secondsUpdated', () => {
-                console.log(timers.breakTimer.getTimeValues().minutes + ':' + timers.breakTimer.getTimeValues().seconds);
                 let breakLeft = timers.breakTimer.getTimeValues().minutes + ':' + timers.breakTimer.getTimeValues().seconds;
                 breakTime.innerHTML = breakLeft;
             });
             timers.breakTimer.on('targetAchieved', () => {
                 pauseView.classList = 'hide';
                 if (currentPage === 'analog') {
-                    console.log(currentPage);
                     analogTimer.classList.remove('hide');
-    
+
                 } else if (currentPage === 'digital') {
-                    console.log(currentPage);
                     digitalTimer.classList.remove('hide');
-    
+
                 } else if (currentPage === 'visual') {
-                    console.log(currentPage);
                     visualTimer.classList.remove('hide');
-    
+
                 }
-                console.log(counter);
                 runTimer(chosenNumber);
             });
-
-
         }
     });
 
@@ -247,6 +218,7 @@ navIconVisual.addEventListener('click', () => {
     menuItem.classList.remove('hide');
     currentPage = 'visual';
 })
+
 naviconMenu.addEventListener('click', () => {
     if (currentPage === 'analog') {
         menuItem.classList = 'hide';
@@ -259,9 +231,7 @@ naviconMenu.addEventListener('click', () => {
     } else if (currentPage === 'visual') {
         menuItem.classList = 'hide';
         visualTimer.classList.remove('hide');
-
     }
-
 })
 
 //menu 
@@ -287,4 +257,5 @@ logo.addEventListener('click', () => {
     loadingPage.classList = 'hide';
     setTimerPage.classList.remove('hide');
 })
-export { countDown, intervalChecked, breaksChecked };
+
+
