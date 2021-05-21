@@ -123,8 +123,9 @@ startButton.addEventListener('click', () => {
 
     timers.timer.on('targetAchieved', () => {
         menuItem.classList = 'hide';
+        blackBox.style.height = '0';
         if (intervalChecked === true && breaksChecked === false) {
-
+            
             runTimer(counter);
 
 

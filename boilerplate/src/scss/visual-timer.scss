@@ -28,7 +28,8 @@ $greyish: rgb(116, 116, 116);
     #timer {
         height: 0;
         background: $darkGrey;
-    
+        transition: 4s linear;
+
         img {
             position: absolute;
             left: 12px;
