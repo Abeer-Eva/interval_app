@@ -10,6 +10,7 @@ const showTime: any = document.getElementById('showTime');
 const intervals: any = document.getElementById('intervals');
 const breaks: any = document.getElementById('break');
 const abortButtonDigital: any = document.getElementById('abort__button--digital');
+const abortButtonVisual: any = document.getElementById('abort__button--visual');
 const digitalTimer: any = document.getElementById('digital-timer');
 const setTimerPage: any = document.getElementById('set-timer-page');
 const startButton: any = document.getElementById('startButton');
@@ -29,15 +30,17 @@ const navIconVisual: any = document.getElementById('navicon-visual');
 const naviconMenu: any = document.getElementById('navicon-menu');
 const analogTimer: any = document.getElementById('timerAnalog');
 const visualTimer: any = document.getElementById('visual-timer');
+const blackBox: any = document.getElementById('timer');
 
-const logo:any= document.getElementById('logo');
-const loadingPage:any = document.getElementById('loading-page');
+const logo: any = document.getElementById('logo');
+const loadingPage: any = document.getElementById('loading-page');
 let counter: number = 10;
 let countDown: any = '';
 let intervalChecked: boolean = false;
 let breaksChecked: boolean = false;
 let chosenNumber = 0;
-let currentPage: string;
+let currentPage: string = 'digital';
+
 
 
 up.addEventListener('click', () => {
@@ -83,6 +86,23 @@ function runTimer(counter: number): void {
         console.log(timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds);
         countDown = timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds;
         digitalTime.innerHTML = countDown;
+
+        // VISUAL
+
+        //Function to move the black box on visual timer
+        let countPercentage = () => {
+            //Total amount of seconds currently
+            let totalSeconds: number = (timers.timer.getTimeValues().minutes * 60) +
+                timers.timer.getTimeValues().seconds;
+            //Percentage of time reached
+            let percent: number = 100 - (totalSeconds / counter) * 100;
+            console.log(percent);
+            //Change styling
+            blackBox.style.height = `${percent}%`;
+        };
+        //Run function
+        countPercentage();
+
     });
 }
 
@@ -91,26 +111,49 @@ startButton.addEventListener('click', () => {
     chosenNumber = counter;
 
     // On click start timer
-
     runTimer(counter);
 
     timers.timer.on('targetAchieved', () => {
+        menuItem.classList = 'hide';
         if (intervalChecked === true && breaksChecked === false) {
-            timers.timer.start({ countdown: true, startValues: { minutes: counter } });
 
-            timers.timer.on('secondsUpdated', () => {
-                console.log(timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds);
-                countDown = timers.timer.getTimeValues().minutes + ':' + timers.timer.getTimeValues().seconds;
-                digitalTime.innerHTML = countDown;
-            });
+            runTimer(counter);
+
 
         } else if (intervalChecked === false) {
             alarmView.classList.remove('hide');
-            digitalTimer.classList = 'hide';
+            if (currentPage === 'analog') {
+                console.log(currentPage);
+                analogTimer.classList.add('hide');
+
+            } else if (currentPage === 'digital') {
+                console.log(currentPage);
+                digitalTimer.classList.add('hide');
+
+            } else if (currentPage === 'visual') {
+                console.log(currentPage);
+                visualTimer.classList.add('hide');
+
+            }
+
 
         } else if (intervalChecked === true && breaksChecked === true) {
             pauseView.classList.remove('hide');
-            digitalTimer.classList = 'hide';
+
+            if (currentPage === 'analog') {
+                console.log(currentPage);
+                analogTimer.classList.add('hide');
+
+            } else if (currentPage === 'digital') {
+                console.log(currentPage);
+                digitalTimer.classList.add('hide');
+
+            } else if (currentPage === 'visual') {
+                console.log(currentPage);
+                visualTimer.classList.add('hide');
+
+            }
+
             timers.breakTimer.start({ countdown: true, startValues: { seconds: 5 } });
             timers.breakTimer.on('secondsUpdated', () => {
                 console.log(timers.breakTimer.getTimeValues().minutes + ':' + timers.breakTimer.getTimeValues().seconds);
@@ -119,10 +162,24 @@ startButton.addEventListener('click', () => {
             });
             timers.breakTimer.on('targetAchieved', () => {
                 pauseView.classList = 'hide';
-                digitalTimer.classList.remove('hide');
+                if (currentPage === 'analog') {
+                    console.log(currentPage);
+                    analogTimer.classList.remove('hide');
+    
+                } else if (currentPage === 'digital') {
+                    console.log(currentPage);
+                    digitalTimer.classList.remove('hide');
+    
+                } else if (currentPage === 'visual') {
+                    console.log(currentPage);
+                    visualTimer.classList.remove('hide');
+    
+                }
                 console.log(counter);
                 runTimer(chosenNumber);
             });
+
+
         }
     });
 
@@ -136,6 +193,13 @@ abortButtonDigital.addEventListener('click', () => {
     digitalTimer.classList = 'hide';
     digitalTime.innerHTML = ':'
 })
+
+abortButtonVisual.addEventListener('click', () => {
+    timers.timer.stop();
+    setTimerPage.classList.remove('hide');
+    visualTimer.classList = 'hide';
+})
+
 
 noPauseBtn.addEventListener('click', () => {
     timers.breakTimer.stop();
@@ -170,44 +234,43 @@ navIconVisual.addEventListener('click', () => {
     currentPage = 'visual';
 })
 naviconMenu.addEventListener('click', () => {
-   if ( currentPage === 'analog'){
-   menuItem.classList ='hide';
-   analogTimer.classList.remove('hide');
-   
-   } else if ( currentPage === 'digital'){
-    menuItem.classList ='hide';
-    digitalTimer.classList.remove('hide');
-
-   } else  if ( currentPage === 'visual'){
-    menuItem.classList ='hide';
-    visualTimer.classList.remove('hide');
-    
-   }
-
-})
-
-
-//----Menu
-    menuDigital.addEventListener('click', () => {
-        menuItem.classList = 'hide';
-        digitalTimer.classList.remove('hide');
-
-    })
-
-    menuAnalog.addEventListener('click', () => {
+    if (currentPage === 'analog') {
         menuItem.classList = 'hide';
         analogTimer.classList.remove('hide');
 
-    })
+    } else if (currentPage === 'digital') {
+        menuItem.classList = 'hide';
+        digitalTimer.classList.remove('hide');
 
-    menuVisual.addEventListener('click', () => {
+    } else if (currentPage === 'visual') {
         menuItem.classList = 'hide';
         visualTimer.classList.remove('hide');
 
-    })
-    export { countDown, intervalChecked, breaksChecked };
-logo.addEventListener('click', () =>{
-loadingPage.classList= 'hide';
-setTimerPage.classList.remove('hide');
+    }
+
+})
+
+//menu 
+menuDigital.addEventListener('click', () => {
+    menuItem.classList = 'hide';
+    digitalTimer.classList.remove('hide');
+    currentPage = 'digital';
+})
+
+menuAnalog.addEventListener('click', () => {
+    menuItem.classList = 'hide';
+    analogTimer.classList.remove('hide');
+    currentPage = 'analog';
+})
+
+menuVisual.addEventListener('click', () => {
+    menuItem.classList = 'hide';
+    visualTimer.classList.remove('hide');
+    currentPage = 'visual';
+})
+
+logo.addEventListener('click', () => {
+    loadingPage.classList = 'hide';
+    setTimerPage.classList.remove('hide');
 })
 export { countDown, intervalChecked, breaksChecked };
