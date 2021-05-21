@@ -14,71 +14,68 @@ $size: 200px;
     font-family: 'PT Sans', sans-serif;
     padding-bottom: 3rem;
 
-    header {
+      header {
+        display: flex;
+        
+        img {
+            margin: 0 7rem 0 1rem;
+        }
+
+        h3 {
+            font-weight: 400;
+            font-size: 20px;      
+        }
+    }
+
+    article{
+      align-self: center;
+      justify-content: center;
+      width: $size *1.5;
+      height: $size *1.5;
+      background: url('../img/minutes.svg') no-repeat center;
       display: flex;
+      align-items: center;
+      position: relative;
 
-      img {
-          margin: 0 7rem 0 1rem;
+    .clock {
+      height: $size*1.5;
+      width: $size*1.5;
+      border-radius: #{$size / 2};
+      display: flex;
+      justify-content: center;
+      
+      &__second,
+      &__minute {
+        position: absolute;
+        left: calc(50% - 1px);
+        width: 2px;
+        background: $black;
+        transform-origin: bottom center;
+        z-index: 2;
+        border-radius: 1px;
+      }
+      
+      &__second {
+        height: #{($size / 2) - 10};
+        margin-top: 10px;
+        background: rgb(70, 192, 230);
+        z-index: 3;
+        margin-bottom: 90px;
       }
 
-      h3 {
-          font-weight: 400;
-          font-size: 20px;
-          
+      &__minute {
+        height: #{($size / 2) - 20};
+        margin-top: 20px;
+        margin-bottom: 90px;
+        opacity: 0.75;
       }
-  }
-
-
-article{
-  align-self: center;
-  justify-content: center;
-  width: $size *1.5;
-  height: $size *1.5;
-  background: url('../img/minutes.svg') no-repeat center;
-  display: flex;
-  align-items: center;
-  position: relative;
-
-.clock {
-  height: $size*1.5;
-  width: $size*1.5;
-  border-radius: #{$size / 2};
-  display: flex;
-  justify-content: center;
-  
-  &__second,
-  &__minute {
-    position: absolute;
-    left: calc(50% - 1px);
-    width: 2px;
-    background: $black;
-    transform-origin: bottom center;
-    z-index: 2;
-    border-radius: 1px;
-  }
-  &__second {
-    height: #{($size / 2) - 10};
-    margin-top: 10px;
-    background: rgb(70, 192, 230);
-   
-    z-index: 3;
-    margin-bottom: 90px;
-  }
-  &__minute {
-    height: #{($size / 2) - 20};
-    margin-top: 20px;
-    margin-bottom: 90px;
-    opacity: 0.75;
-  }
- 
- 
-  
-
-@keyframes time {
-  to {
-    transform: rotateZ(360deg);
-  }
-}}
+    
+      @keyframes time {
+        to {
+          transform: rotateZ(360deg);
+        }
+      }
+    }
 }
 
 button {
@@ -98,5 +95,4 @@ button {
 &.hide {
   display: none;
 }
-
 }
