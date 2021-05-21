@@ -30,6 +30,8 @@ const naviconMenu: any = document.getElementById('navicon-menu');
 const analogTimer: any = document.getElementById('timerAnalog');
 const visualTimer: any = document.getElementById('visual-timer');
 
+const logo:any= document.getElementById('logo');
+const loadingPage:any = document.getElementById('loading-page');
 let counter: number = 10;
 let countDown: any = '';
 let intervalChecked: boolean = false;
@@ -204,3 +206,8 @@ naviconMenu.addEventListener('click', () => {
 
     })
     export { countDown, intervalChecked, breaksChecked };
+logo.addEventListener('click', () =>{
+loadingPage.classList= 'hide';
+setTimerPage.classList.remove('hide');
+})
+export { countDown, intervalChecked, breaksChecked };
